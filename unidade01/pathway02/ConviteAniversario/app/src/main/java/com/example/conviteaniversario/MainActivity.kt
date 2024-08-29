@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.conviteaniversario.ui.theme.ConviteDeAniversárioTheme
 
 class MainActivity : ComponentActivity() {
@@ -39,7 +40,7 @@ fun Greeting(
     Surface(color = Color.Green) {
         Text(
             text = "Oi, meu nome é $name!",
-            modifier = modifier
+            modifier = modifier.padding(24.dp)
         )
     }
 }
