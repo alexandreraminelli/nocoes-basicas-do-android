@@ -37,10 +37,12 @@ class MainActivity : ComponentActivity() {
 fun Greeting(
     name: String,
     modifier: Modifier = Modifier) {
-    Surface(color = Color.Green) {
+    Surface(
+        color = Color.Red // Cor de fundo do texto
+    ) {
         Text(
-            text = "Oi, meu nome é $name!",
-            modifier = modifier.padding(24.dp)
+            text = "Oi, meu nome é $name!",     // Texto exibido na tela
+            modifier = modifier.padding(24.dp)  // Padding do texto
         )
     }
 }
