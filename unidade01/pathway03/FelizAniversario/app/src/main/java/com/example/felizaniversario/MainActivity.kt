@@ -5,13 +5,18 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.felizaniversario.ui.theme.FelizAniversárioTheme
 
@@ -43,18 +48,23 @@ fun GreetingText(
     modifier: Modifier = Modifier
 ) {
     Column( // exibir elementos verticalmente
-        modifier = modifier // transmitir parâmetro modificador aos elementos filhos
+        verticalArrangement = Arrangement.Center,   // centralizar os elementos verticalmente
+        modifier = modifier.padding(8.dp)           // padding de 8dp em volta do conteúdo
     ) {
-        // Primeiro texto
+        // Texto da mensagem
         Text(
-            text = mensagem,        // mensagem exibida na tela
-            fontSize = 30.sp,       // tamanho da fonte
-            lineHeight = 116.sp,    // altura da linha
+            text = mensagem,                // mensagem exibida na tela
+            fontSize = 40.sp,               // tamanho da fonte
+            lineHeight = 45.sp,             // altura da linha
+            textAlign = TextAlign.Center    // centralizar o texto
         )
-        // Segundo texto
+        // Texto do remetente
         Text(
             text = "- de $remetente",   // mensagem exibida na tela
-            fontSize = 20.sp            // tamanho da fonte
+            fontSize = 20.sp,           // tamanho da fonte
+            modifier = Modifier
+                .padding(16.dp)         // padding de 16dp em volta do conteúdo
+                .align(alignment = Alignment.End)  // alinhar à direita
         )
     }
 }
