@@ -16,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -86,7 +87,8 @@ fun GreetingImage(
     Box(modifier) {
         Image(  // imagem decorativa
             painter = imagem,           // imagem a ser exibida
-            contentDescription = null   // imagem decorativa (não precisa de descrição)
+            contentDescription = null,   // imagem decorativa (não precisa de descrição)
+            contentScale = ContentScale.Crop,   // ajuste de escala para a imagem preencher tudo
         )
 
         GreetingText(
