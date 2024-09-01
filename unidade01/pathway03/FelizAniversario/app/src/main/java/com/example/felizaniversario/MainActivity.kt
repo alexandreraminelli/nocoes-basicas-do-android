@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -32,10 +33,10 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    GreetingText(
+                    // Chamar a função combinável para renderizar a UI
+                    GreetingImage(
                         mensagem = "Feliz Aniversário, Sam!",
-                        remetente = "Alexandre",
-                        modifier = Modifier.padding(8.dp)
+                        remetente = "Alexandre"
                     )
                 }
             }
@@ -82,11 +83,20 @@ fun GreetingImage(
 ) {
     // Acessar uma imagem do recurso (androidparty.png)
     val imagem = painterResource(R.drawable.androidparty)
+    Box(modifier) {
+        Image(  // imagem decorativa
+            painter = imagem,           // imagem a ser exibida
+            contentDescription = null   // imagem decorativa (não precisa de descrição)
+        )
 
-    Image(
-        painter = imagem,           // imagem a ser exibida
-        contentDescription = null   // imagem decorativa (não precisa de descrição)
-    )
+        GreetingText(
+            mensagem = mensagem,
+            remetente = remetente,
+            modifier = Modifier
+                .fillMaxSize()  // preencher toda a tela
+                .padding(8.dp)  // padding de 8dp em volta do conteúdo
+        )
+    }
 }
 
 // Função combinável de pré-visualização (preview)
