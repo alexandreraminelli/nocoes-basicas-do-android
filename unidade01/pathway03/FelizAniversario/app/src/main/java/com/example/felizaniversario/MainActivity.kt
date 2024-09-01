@@ -89,6 +89,7 @@ fun GreetingImage(
             painter = imagem,           // imagem a ser exibida
             contentDescription = null,   // imagem decorativa (não precisa de descrição)
             contentScale = ContentScale.Crop,   // ajuste de escala para a imagem preencher tudo
+            alpha = 0.8F    // tornar a imagem um pouco transparente
         )
 
         GreetingText(
