@@ -32,7 +32,8 @@ class MainActivity : ComponentActivity() {
                 ) {
                     GreetingText(
                         mensagem  = "Feliz Aniversário, Sam!",
-                        remetente = "Alexandre"
+                        remetente = "Alexandre",
+                        modifier  = Modifier.padding(8.dp)
                     )
                 }
             }
@@ -49,7 +50,7 @@ fun GreetingText(
 ) {
     Column( // exibir elementos verticalmente
         verticalArrangement = Arrangement.Center,   // centralizar os elementos verticalmente
-        modifier = modifier.padding(8.dp)           // padding de 8dp em volta do conteúdo
+        modifier = modifier
     ) {
         // Texto da mensagem
         Text(
@@ -76,7 +77,8 @@ fun PreviaCartaoDeAniversario() {
     FelizAniversárioTheme {
     GreetingText(
         mensagem  = "Feliz Aniversário, Sam!",
-        remetente = "Alexandre"
+        remetente = "Alexandre",
+        modifier  = Modifier
     )
     }
 }
