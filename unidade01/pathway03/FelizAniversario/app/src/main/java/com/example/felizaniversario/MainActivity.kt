@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -70,15 +72,31 @@ fun GreetingText(
     }
 }
 
-// Função combinável de visualização (preview)
+// Função combinável que exibe imagem
+@Composable
+fun GreetingImage(
+    mensagem: String,   // mensagem de aniversário
+    remetente: String,  // remetente do cartão
+    // parâmetro Modifier opcional (para todas as funções combináveis)
+    modifier: Modifier = Modifier   // como os elementos serão dispostos
+) {
+    // Acessar uma imagem do recurso (androidparty.png)
+    val imagem = painterResource(R.drawable.androidparty)
+
+    Image(
+        painter = imagem,           // imagem a ser exibida
+        contentDescription = null   // imagem decorativa (não precisa de descrição)
+    )
+}
+
+// Função combinável de pré-visualização (preview)
 @Preview(showBackground = true)
 @Composable
 fun PreviaCartaoDeAniversario() {
     FelizAniversárioTheme {
-    GreetingText(
-        mensagem  = "Feliz Aniversário, Sam!",
-        remetente = "Alexandre",
-        modifier  = Modifier
-    )
+        GreetingImage(
+            mensagem = "Feliz Aniversário, Sam!",
+            remetente = "Alexandre"
+        )
     }
 }
