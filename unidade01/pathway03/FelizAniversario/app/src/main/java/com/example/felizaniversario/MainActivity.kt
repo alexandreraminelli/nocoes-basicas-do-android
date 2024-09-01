@@ -5,12 +5,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.example.felizaniversario.ui.theme.FelizAniversárioTheme
 
 class MainActivity : ComponentActivity() {
@@ -34,7 +34,11 @@ fun GreetingText(
     mensagem: String,
     modifier: Modifier = Modifier
 ) {
-    Text(text = mensagem)
+    Text(
+        text = mensagem,     // mensagem exibida na tela
+        fontSize = 100.sp,   // tamanho da fonte
+        lineHeight = 116.sp, // altura da linha
+    )
 }
 
 // Função combinável de visualização (preview)
