@@ -1,5 +1,6 @@
 package com.example.felizaniversario
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,6 +16,7 @@ import androidx.compose.ui.unit.sp
 import com.example.felizaniversario.ui.theme.FelizAniversárioTheme
 
 class MainActivity : ComponentActivity() {
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,6 +25,10 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     modifier = Modifier.fillMaxSize()
                 ) {
+                    GreetingText(
+                        mensagem  = "Feliz Aniversário, Sam!",
+                        remetente = "Alexandre"
+                    )
                 }
             }
         }
