@@ -19,35 +19,29 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             FelizAniversárioTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                Scaffold(
+                    modifier = Modifier.fillMaxSize()
+                ) {
                 }
             }
         }
     }
 }
 
+// Função combinável que descreve elemento Text
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun GreetingText(
+    mensagem: String,
+    modifier: Modifier = Modifier
+) {
+    Text(text = mensagem)
 }
 
-/*
- * Função combinável de visualização (preview)
- */
-@Preview(
-    showBackground = true   // Exibir o background na visualização
-)
+// Função combinável de visualização (preview)
+@Preview(showBackground = true)
 @Composable
 fun PreviaCartaoDeAniversario() {
     FelizAniversárioTheme {
-        // Passa o parâmetro string para a função Greeting
-        Greeting("Alexandre")
+    GreetingText("Feliz Aniversário, Sam!")
     }
 }
