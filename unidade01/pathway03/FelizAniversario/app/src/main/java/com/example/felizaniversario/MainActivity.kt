@@ -33,9 +33,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize()
                 ) {
                     GreetingText(
-                        mensagem  = "Feliz Aniversário, Sam!",
+                        mensagem = "Feliz Aniversário, Sam!",
                         remetente = "Alexandre",
-                        modifier  = Modifier.padding(8.dp)
+                        modifier = Modifier.padding(8.dp)
                     )
                 }
             }
