@@ -54,7 +54,7 @@ fun Greeting(
         Image(
             painter = imagem,
             contentDescription = null,
-            modifier = Modifier.weight(1f)
+            modifier = Modifier
         )
 
         // Exibir título
