@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -64,6 +65,33 @@ fun Greeting(
             fontSize = 24.sp,
             modifier = Modifier
                 .padding(16.dp) // Padding de 16dp
+        )
+
+        // Parágrafo 1
+        Text(
+            // Texto exibido
+            text = stringResource(R.string.paragrafo1),
+            // Tamanho da fonte
+            fontSize = 16.sp,
+            // Alinhamento do texto: justificado
+            textAlign = TextAlign.Justify,
+
+            modifier = Modifier
+                // Padding de 16dp
+                .padding(16.dp)
+        )
+        // Parágrafo 2
+        Text(
+            // Texto exibido
+            text = stringResource(R.string.paragrafo2),
+            // Tamanho da fonte
+            fontSize = 16.sp,
+            // Alinhamento do texto: justificado
+            textAlign = TextAlign.Justify,
+
+            modifier = Modifier
+                // Padding de 16dp
+                .padding(16.dp)
         )
 
     }
