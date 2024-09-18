@@ -5,14 +5,19 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.learntogether.ui.theme.LearnTogetherTheme
 
 
@@ -37,15 +42,30 @@ fun Greeting(
     modifier: Modifier = Modifier
 ) {
 // Organizar elementos em colunas
-    Column {
+    Column(
+        modifier = modifier.fillMaxSize(),
+        // Alinhar elementos no topo
+        verticalArrangement = Arrangement.Top
+    ) {
         // Obter recurso de imagem
         val imagem = painterResource(R.drawable.bg_compose_background)
         // Exibir imagem
         Image(
             painter = imagem,
             contentDescription = null,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.weight(1f)
         )
+
+        // Exibir título
+        Text(
+            // Texto exibido
+            text = stringResource(R.string.titulo),
+            // Tamanho da fonte
+            fontSize = 24.sp,
+            modifier = Modifier
+                .padding(16.dp) // Padding de 16dp
+        )
+
     }
 
 }
