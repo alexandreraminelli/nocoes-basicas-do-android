@@ -76,7 +76,7 @@ fun Greeting(
         // Exibir imagem de capa
         GreetingImageIntroduction(imagemCapa)
 
-        // Exibir texto do artigo
+        // Exibir artigo
         GreetingArticle(tituloArtigo, paragrafoArtigo1, paragrafoArtigo2)
 
     }
@@ -102,26 +102,19 @@ fun GreetingImageIntroduction(
 
 /**
  * Função combinável que exibe o artigo
- * @param title Título do artigo.
+ * @param titulo Título do artigo.
  * @param paragrafo1 Primeiro parágrafo do artigo.
  * @param paragrafo2 Segundo parágrafo do artigo.
  *
  */
 @Composable
 fun GreetingArticle(
-    title: String,
+    titulo: String,
     paragrafo1: String,
     paragrafo2: String
 ) {
-// Exibir título
-    Text(
-        // Texto exibido
-        text = title,
-        // Tamanho da fonte
-        fontSize = 24.sp,
-        modifier = Modifier
-            .padding(16.dp) // Padding de 16dp
-    )
+    // Exibir título do artigo
+    GreetingHeading1(titulo)
 
     // Parágrafo 1
     Text(
@@ -148,6 +141,24 @@ fun GreetingArticle(
         modifier = Modifier
             // Padding de 16dp
             .padding(16.dp)
+    )
+}
+
+/**
+ * Exibir um título nível 1
+ */
+@Composable
+fun GreetingHeading1(
+    titulo: String
+) {
+    Text(
+        // Texto exibido
+        text = titulo,
+        // Tamanho da fonte: 24sp
+        fontSize = 24.sp,
+        // Modificadores
+        modifier = Modifier
+            .padding(16.dp) // Padding de 16dp
     )
 }
 
