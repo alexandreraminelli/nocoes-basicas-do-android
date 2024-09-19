@@ -5,12 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
@@ -31,8 +33,9 @@ class MainActivity : ComponentActivity() {
 
                     // Chamar função combinável
                     GreetingMsgTarefasConcluidas(
-                        icone = iconeConcluido,
-                        modifier = Modifier.padding(innerPadding)
+                        icone = iconeConcluido, // Recurso do ícone
+                        modifier = Modifier // Modificador
+                            .padding(innerPadding)   // Adicionar padding interno
                     )
                 }
             }
@@ -53,12 +56,15 @@ fun GreetingMsgTarefasConcluidas(
 ) {
     // Organizar os elementos em um layout de coluna
     Column(
-        //verticalArrangement = Arrangement.Center,   // Centralizar verticalmente
-
+        // Modificadores
+        modifier = modifier
+            .fillMaxSize(),  // coluna preencher toda a tela
+        // Alinhamento dos filhos
+        verticalArrangement = Arrangement.Center,   // alinhamento vertical: centralizado
+        horizontalAlignment = Alignment.CenterHorizontally  // alinhamento horizontal: centralizado
     ) {
-        GreetingIcone(
-            icone = icone
-        )
+        // Função combinável que exibe ícone na tela
+        GreetingIcone(icone)
     }
 }
 
@@ -72,11 +78,12 @@ fun GreetingIcone(
     icone: Painter
 ) {
     Image(
-        painter = icone,
+        painter = icone,    // obter recurso do ícone
+        // Descrição do ícone
         contentDescription = stringResource(R.string.icone_concluido_desc),
         // Modificadores
         modifier = Modifier
-            .size(250.dp)
+            .size(250.dp)   // Tamanho do ícone: 250dp
     )
 }
 
