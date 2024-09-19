@@ -13,6 +13,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -50,11 +51,9 @@ fun Greeting(
     ) {
         // Obter recurso de imagem
         val imagem = painterResource(R.drawable.bg_compose_background)
-        // Exibir imagem
-        Image(
-            painter = imagem,
-            contentDescription = null,
-            modifier = Modifier
+        // Chamar função combinável que exibe a imagem
+        GreetingImageIntroduction(
+            image = imagem
         )
 
         // Exibir título
@@ -96,6 +95,24 @@ fun Greeting(
 
     }
 
+}
+
+/**
+ * Função combinável que exibe a imagem no topo
+ */
+@Composable
+fun GreetingImageIntroduction(
+    // Receber recurso de imagem
+    image: Painter,
+    modifier: Modifier = Modifier
+) {
+// Exibir imagem
+    Image(
+        // Recurso da imagem
+        painter = image,
+        contentDescription = null,
+        modifier = Modifier
+    )
 }
 
 @Preview(showBackground = true)
