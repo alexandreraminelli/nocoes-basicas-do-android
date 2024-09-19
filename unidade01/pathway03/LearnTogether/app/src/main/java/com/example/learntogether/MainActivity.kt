@@ -32,9 +32,17 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     // Definir recurso de imagem
                     val imagem = painterResource(R.drawable.bg_compose_background)
+                    // Obter recursos de string
+                    val titulo = stringResource(R.string.titulo)
+                    val paragrafo1 = stringResource(R.string.paragrafo1)
+                    val paragrafo2 = stringResource(R.string.paragrafo2)
+
                     // Exibir conteúdo (imagem de capa + artigo) na tela
                     Greeting(
                         imagemCapa = imagem,
+                        tituloArtigo = titulo,
+                        paragrafoArtigo1 = paragrafo1,
+                        paragrafoArtigo2 = paragrafo2,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -46,11 +54,17 @@ class MainActivity : ComponentActivity() {
 /**
  * Exibir conteúdo na tela
 
- * @param imagemCapa O recurso de imagem que é exibido na tela
+ * @param imagemCapa O recurso de imagem que é exibido na tela.
+ * @param tituloArtigo O título do artigo exibido abaixo da imagem de capa.
+ * @param paragrafoArtigo1 Texto do primeiro parágrafo do artigo.
+ * @param paragrafoArtigo2 Texto do segundo parágrafo do artigo.
  */
 @Composable
 fun Greeting(
     imagemCapa: Painter,
+    tituloArtigo: String,
+    paragrafoArtigo1: String,
+    paragrafoArtigo2: String,
     modifier: Modifier = Modifier
 ) {
 // Organizar elementos em uma coluna
@@ -59,48 +73,11 @@ fun Greeting(
         // Alinhar elementos no topo
         verticalArrangement = Arrangement.Top
     ) {
-        // Obter recurso de imagem
-        // Chamar função combinável que exibe a imagem
-        GreetingImageIntroduction(
-            image = imagemCapa
-        )
+        // Exibir imagem de capa
+        GreetingImageIntroduction(imagemCapa)
 
-        // Exibir título
-        Text(
-            // Texto exibido
-            text = stringResource(R.string.titulo),
-            // Tamanho da fonte
-            fontSize = 24.sp,
-            modifier = Modifier
-                .padding(16.dp) // Padding de 16dp
-        )
-
-        // Parágrafo 1
-        Text(
-            // Texto exibido
-            text = stringResource(R.string.paragrafo1),
-            // Tamanho da fonte
-            fontSize = 16.sp,
-            // Alinhamento do texto: justificado
-            textAlign = TextAlign.Justify,
-
-            modifier = Modifier
-                // Padding de 16dp
-                .padding(16.dp)
-        )
-        // Parágrafo 2
-        Text(
-            // Texto exibido
-            text = stringResource(R.string.paragrafo2),
-            // Tamanho da fonte
-            fontSize = 16.sp,
-            // Alinhamento do texto: justificado
-            textAlign = TextAlign.Justify,
-
-            modifier = Modifier
-                // Padding de 16dp
-                .padding(16.dp)
-        )
+        // Exibir texto do artigo
+        GreetingArticle(tituloArtigo, paragrafoArtigo1, paragrafoArtigo2)
 
     }
 
@@ -123,13 +100,74 @@ fun GreetingImageIntroduction(
     )
 }
 
+/**
+ * Função combinável que exibe o artigo
+ * @param title Título do artigo.
+ * @param paragrafo1 Primeiro parágrafo do artigo.
+ * @param paragrafo2 Segundo parágrafo do artigo.
+ *
+ */
+@Composable
+fun GreetingArticle(
+    title: String,
+    paragrafo1: String,
+    paragrafo2: String
+) {
+// Exibir título
+    Text(
+        // Texto exibido
+        text = title,
+        // Tamanho da fonte
+        fontSize = 24.sp,
+        modifier = Modifier
+            .padding(16.dp) // Padding de 16dp
+    )
+
+    // Parágrafo 1
+    Text(
+        // Texto exibido
+        text = paragrafo1,
+        // Tamanho da fonte
+        fontSize = 16.sp,
+        // Alinhamento do texto: justificado
+        textAlign = TextAlign.Justify,
+
+        modifier = Modifier
+            // Padding de 16dp
+            .padding(16.dp)
+    )
+    // Parágrafo 2
+    Text(
+        // Texto exibido
+        text = paragrafo2,
+        // Tamanho da fonte
+        fontSize = 16.sp,
+        // Alinhamento do texto: justificado
+        textAlign = TextAlign.Justify,
+
+        modifier = Modifier
+            // Padding de 16dp
+            .padding(16.dp)
+    )
+}
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     LearnTogetherTheme {
+        // Definir recurso de imagem
         val imagem = painterResource(R.drawable.bg_compose_background)
+        // Obter recursos de string
+        val titulo = stringResource(R.string.titulo)
+        val paragrafo1 = stringResource(R.string.paragrafo1)
+        val paragrafo2 = stringResource(R.string.paragrafo2)
+
+        // Exibir conteúdo (imagem de capa + artigo) na tela
         Greeting(
             imagemCapa = imagem,
+            tituloArtigo = titulo,
+            paragrafoArtigo1 = paragrafo1,
+            paragrafoArtigo2 = paragrafo2,
             modifier = Modifier
         )
     }
