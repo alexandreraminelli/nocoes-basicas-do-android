@@ -37,11 +37,13 @@ class MainActivity : ComponentActivity() {
 
                     // Obter recursos de string
                     val msgConcluido = stringResource(R.string.msg_tarefas_concluidas)
+                    val msgParabens = stringResource(R.string.msg_parabens)
 
                     // Chamar função combinável
                     GreetingMsgTarefasConcluidas(
                         icone = iconeConcluido, // Recurso do ícone
                         textoDestaque = msgConcluido, // Texto de destaque
+                        textoSubtitulo = msgParabens, // Texto subtitulo
                         modifier = Modifier // Modificador
                             .padding(innerPadding)   // Adicionar padding interno
                     )
@@ -55,12 +57,15 @@ class MainActivity : ComponentActivity() {
  * Função combinável que exibe uma mensagem no centro da tela com um ícone.
  *
  * @param icone O painter do recurso que será exibido no topo da mensagem.
+ * @param textoDestaque O texto que será exibido no topo da mensagem com ênfase.
+ * @param textoSubtitulo O texto que será exibido abaixo do textoDestaque com menos ênfase.
  */
 @Composable
 fun GreetingMsgTarefasConcluidas(
     // Elementos da tela
     icone: Painter,
     textoDestaque: String,
+    textoSubtitulo: String,
     // Modificador
     modifier: Modifier = Modifier
 ) {
@@ -78,6 +83,9 @@ fun GreetingMsgTarefasConcluidas(
 
         // Exibir texto de destaque na tela
         GreetingTextoDestaque(textoDestaque)
+
+        // Exibir texto normal da mensagem.
+        GreetingTexto(textoSubtitulo)
     }
 }
 
@@ -125,6 +133,22 @@ fun GreetingTextoDestaque(
     )
 }
 
+/**
+ * Função combinável que exibe texto normal na tela.
+ *
+ * @param texto O texto a ser exibido.
+ */
+@Composable
+fun GreetingTexto(
+    texto: String
+) {
+    Text(
+        text = texto,   // texto a ser exibido
+        // Tipografia
+        fontSize = 16.sp,    // tamanho da fonte: 16sp
+    )
+}
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
@@ -134,11 +158,13 @@ fun GreetingPreview() {
 
         // Obter recursos de string
         val msgConcluido = stringResource(R.string.msg_tarefas_concluidas)
+        val msgParabens = stringResource(R.string.msg_parabens)
 
         // Chamar função combinável
         GreetingMsgTarefasConcluidas(
             icone = iconeConcluido, // Recurso do ícone
             textoDestaque = msgConcluido, // Texto de destaque
+            textoSubtitulo = msgParabens, // Texto subtitulo
             modifier = Modifier // Modificador
         )
     }
