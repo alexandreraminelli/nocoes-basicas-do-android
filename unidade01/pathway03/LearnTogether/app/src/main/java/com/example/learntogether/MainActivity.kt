@@ -102,10 +102,10 @@ fun GreetingImageIntroduction(
 
 /**
  * Função combinável que exibe o artigo
+ *
  * @param titulo Título do artigo.
  * @param paragrafo1 Primeiro parágrafo do artigo.
  * @param paragrafo2 Segundo parágrafo do artigo.
- *
  */
 @Composable
 fun GreetingArticle(
@@ -116,49 +116,49 @@ fun GreetingArticle(
     // Exibir título do artigo
     GreetingHeading1(titulo)
 
-    // Parágrafo 1
-    Text(
-        // Texto exibido
-        text = paragrafo1,
-        // Tamanho da fonte
-        fontSize = 16.sp,
-        // Alinhamento do texto: justificado
-        textAlign = TextAlign.Justify,
+    // Exibir parágrafo 1
+    GreetingParagrafoArtigo(paragrafo1)
 
-        modifier = Modifier
-            // Padding de 16dp
-            .padding(16.dp)
-    )
-    // Parágrafo 2
-    Text(
-        // Texto exibido
-        text = paragrafo2,
-        // Tamanho da fonte
-        fontSize = 16.sp,
-        // Alinhamento do texto: justificado
-        textAlign = TextAlign.Justify,
-
-        modifier = Modifier
-            // Padding de 16dp
-            .padding(16.dp)
-    )
+    // Exibir parágrafo 2
+    GreetingParagrafoArtigo(paragrafo2)
 }
 
 /**
  * Exibir um título nível 1
+ *
+ * @param titulo Título a ser exibido
  */
 @Composable
 fun GreetingHeading1(
     titulo: String
 ) {
     Text(
-        // Texto exibido
-        text = titulo,
-        // Tamanho da fonte: 24sp
-        fontSize = 24.sp,
+        text = titulo,      // Texto exibido
+        // Tipografia
+        fontSize = 24.sp,   // Tamanho da fonte: 24sp
         // Modificadores
         modifier = Modifier
             .padding(16.dp) // Padding de 16dp
+    )
+}
+
+/**
+ * Exibir texto normal de um artigo.
+ *
+ * @param texto Texto a ser exibido.
+ */
+@Composable
+fun GreetingParagrafoArtigo(
+    texto: String
+) {
+    Text(
+        text = texto,                   // Texto exibido
+        // Tipografia
+        fontSize = 16.sp,               // Tamanho da fonte
+        textAlign = TextAlign.Justify,  // Alinhamento do texto: justificado
+        // Modificadores
+        modifier = Modifier
+            .padding(16.dp)             // Padding de 16dp
     )
 }
 
