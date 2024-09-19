@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  Recursos de string em Português Brasileiro  -->
+
+    <string name="msg_tarefas_concluidas">Todas as tarefas foram concluídas!</string>
+    <string name="msg_parabens">Bom trabalho!</string>
+</resources>
