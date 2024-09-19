@@ -104,7 +104,7 @@ fun GreetingIcone(
         contentDescription = stringResource(R.string.icone_concluido_desc),
         // Modificadores
         modifier = Modifier
-            .size(250.dp)   // Tamanho do ícone: 250dp
+            .size(200.dp)   // Tamanho do ícone: 250dp
     )
 }
 
