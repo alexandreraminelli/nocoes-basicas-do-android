@@ -4,4 +4,7 @@
 
     <string name="msg_tarefas_concluidas">Todas as tarefas foram concluídas!</string>
     <string name="msg_parabens">Bom trabalho!</string>
+
+    <!-- Descrição do ícone -->
+    <string name="icone_concluido_desc">Ícone de tarefa concluída.</string>
 </resources>
