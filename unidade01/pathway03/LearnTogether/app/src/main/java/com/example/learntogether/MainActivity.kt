@@ -30,7 +30,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             LearnTogetherTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    // Definir recurso de imagem
+                    val imagem = painterResource(R.drawable.bg_compose_background)
+                    // Exibir conteúdo (imagem de capa + artigo) na tela
                     Greeting(
+                        imagemCapa = imagem,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -39,21 +43,26 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * Exibir conteúdo na tela
+
+ * @param imagemCapa O recurso de imagem que é exibido na tela
+ */
 @Composable
 fun Greeting(
+    imagemCapa: Painter,
     modifier: Modifier = Modifier
 ) {
-// Organizar elementos em colunas
+// Organizar elementos em uma coluna
     Column(
         modifier = modifier.fillMaxSize(),
         // Alinhar elementos no topo
         verticalArrangement = Arrangement.Top
     ) {
         // Obter recurso de imagem
-        val imagem = painterResource(R.drawable.bg_compose_background)
         // Chamar função combinável que exibe a imagem
         GreetingImageIntroduction(
-            image = imagem
+            image = imagemCapa
         )
 
         // Exibir título
@@ -103,8 +112,7 @@ fun Greeting(
 @Composable
 fun GreetingImageIntroduction(
     // Receber recurso de imagem
-    image: Painter,
-    modifier: Modifier = Modifier
+    image: Painter
 ) {
 // Exibir imagem
     Image(
@@ -119,6 +127,10 @@ fun GreetingImageIntroduction(
 @Composable
 fun GreetingPreview() {
     LearnTogetherTheme {
-        Greeting()
+        val imagem = painterResource(R.drawable.bg_compose_background)
+        Greeting(
+            imagemCapa = imagem,
+            modifier = Modifier
+        )
     }
 }
