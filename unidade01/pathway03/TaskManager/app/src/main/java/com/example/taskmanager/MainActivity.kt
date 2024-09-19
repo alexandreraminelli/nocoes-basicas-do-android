@@ -11,14 +11,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.taskmanager.ui.theme.TaskManagerTheme
 
 class MainActivity : ComponentActivity() {
@@ -31,9 +35,13 @@ class MainActivity : ComponentActivity() {
                     // Obter recurso de imagem
                     val iconeConcluido = painterResource(R.drawable.ic_task_completed)
 
+                    // Obter recursos de string
+                    val msgConcluido = stringResource(R.string.msg_tarefas_concluidas)
+
                     // Chamar função combinável
                     GreetingMsgTarefasConcluidas(
                         icone = iconeConcluido, // Recurso do ícone
+                        textoDestaque = msgConcluido, // Texto de destaque
                         modifier = Modifier // Modificador
                             .padding(innerPadding)   // Adicionar padding interno
                     )
@@ -50,7 +58,9 @@ class MainActivity : ComponentActivity() {
  */
 @Composable
 fun GreetingMsgTarefasConcluidas(
+    // Elementos da tela
     icone: Painter,
+    textoDestaque: String,
     // Modificador
     modifier: Modifier = Modifier
 ) {
@@ -63,13 +73,16 @@ fun GreetingMsgTarefasConcluidas(
         verticalArrangement = Arrangement.Center,   // alinhamento vertical: centralizado
         horizontalAlignment = Alignment.CenterHorizontally  // alinhamento horizontal: centralizado
     ) {
-        // Função combinável que exibe ícone na tela
+        // Exibir ícone na tela
         GreetingIcone(icone)
+
+        // Exibir texto de destaque na tela
+        GreetingTextoDestaque(textoDestaque)
     }
 }
 
 /**
- *  Função combinável que exibe o ícone na tela
+ *  Função combinável que exibe o ícone na tela.
  *
  *  @icone Recurso drawable do ícone a ser exibido.
  */
@@ -87,6 +100,31 @@ fun GreetingIcone(
     )
 }
 
+/**
+ * Função combinável que exibe texto com destaque na tela.
+ *
+ * @param texto O texto a ser exibido.
+ */
+@Composable
+fun GreetingTextoDestaque(
+    texto: String
+) {
+    Text(
+        text = texto,   // texto a ser exibido
+        // Tipografia
+        fontSize = 24.sp,    // tamanho da fonte: 24sp
+        fontWeight = FontWeight.Bold,   // peso da fonte: bold (negrito)
+        // Alinhamento
+        textAlign = TextAlign.Center,   // alinhamento: centralizado
+        // Modificadores
+        modifier = Modifier
+            .padding(   // Adicionar padding
+                top = 24.dp,    // padding-top: 24dp
+                bottom = 8.dp   // padding-bottom: 8dp
+            )
+    )
+}
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
@@ -94,10 +132,14 @@ fun GreetingPreview() {
         // Obter recurso de imagem
         val iconeConcluido = painterResource(R.drawable.ic_task_completed)
 
+        // Obter recursos de string
+        val msgConcluido = stringResource(R.string.msg_tarefas_concluidas)
+
         // Chamar função combinável
         GreetingMsgTarefasConcluidas(
-            icone = iconeConcluido,
-            modifier = Modifier
+            icone = iconeConcluido, // Recurso do ícone
+            textoDestaque = msgConcluido, // Texto de destaque
+            modifier = Modifier // Modificador
         )
     }
 }
