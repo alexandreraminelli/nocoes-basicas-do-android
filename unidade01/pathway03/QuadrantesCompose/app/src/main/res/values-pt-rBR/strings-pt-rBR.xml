@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App name -->
+    <string name="app_name">Quadrantes do Compose</string>
+
+    <!-- Text composable -->
+    <string name="text_title">Text composable</string>
+    <string name="text_paragraph">Exibe texto e segue as diretrizes recomendadas do Material Design.</string>
+
+    <!-- Image composable -->
+    <string name="image_title">Image composable</string>
+    <string name="image_paragraph">Cria um composable que organiza e desenha um objeto da classe Painter fornecido.</string>
+
+    <!-- Row composable -->
+    <string name="row_title">Row composable</string>
+    <string name="row_paragraph">Um composable de layout que posiciona seus elementos filhos em uma sequência horizontal.</string>
+
+    <!-- Column composable -->
+    <string name="column_title">Column composable</string>
+    <string name="column_paragraph">Um composable de layout que posiciona seus elementos filhos em uma sequência vertical.</string>
+</resources>
