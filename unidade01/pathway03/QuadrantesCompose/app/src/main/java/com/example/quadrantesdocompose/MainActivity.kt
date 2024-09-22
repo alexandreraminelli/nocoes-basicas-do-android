@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -64,13 +65,13 @@ fun Greeting(
         modifier = modifier
             .fillMaxSize() // Preencher a tela inteira
     ) {
-        // Modificadores pras Rows
-        val modificadorRow = Modifier
-            .weight(1f) // Preencher toda a width da tela
+        // Modificadores para os elementos ocuparem metade da largura disponível
+        val modificadorMetadeLargura = Modifier
+            .weight(1f)
 
         // Row dos Elementos
         Row(
-            modifier = modificadorRow
+            modifier = modificadorMetadeLargura
         ) {
             /* Elementos da Row */
             // Text card
@@ -80,7 +81,8 @@ fun Greeting(
             CardInformativo(
                 titulo = tituloText,
                 descricao = descricaoText,
-                backgroundColor = backgroundText
+                backgroundColor = backgroundText,
+                modifier = modificadorMetadeLargura
             )
 
             // Image card
@@ -90,12 +92,13 @@ fun Greeting(
             CardInformativo(
                 titulo = tituloImage,
                 descricao = descricaoImage,
-                backgroundColor = backgroundImage
+                backgroundColor = backgroundImage,
+                modifier = modificadorMetadeLargura
             )
         }
         // Row dos tipos de Layout
         Row(
-            modifier = modificadorRow
+            modifier = modificadorMetadeLargura
         ) {
             /* Elementos da Row */
 
@@ -106,7 +109,8 @@ fun Greeting(
             CardInformativo(
                 titulo = tituloRow,
                 descricao = descricaoRow,
-                backgroundColor = backgroundRow
+                backgroundColor = backgroundRow,
+                modifier = modificadorMetadeLargura
             )
 
             // Column card
@@ -116,7 +120,8 @@ fun Greeting(
             CardInformativo(
                 titulo = tituloColumn,
                 descricao = descricaoColumn,
-                backgroundColor = backgroundColumn
+                backgroundColor = backgroundColumn,
+                modifier = modificadorMetadeLargura
             )
         }
     }
@@ -146,7 +151,7 @@ fun CardInformativo(
         modifier = modifier
             .background(backgroundColor) // Background: Cor de fundo
             .padding(16.dp) // Padding: 16dp
-            .fillMaxSize() // Preencher toda a width da tela
+            .fillMaxHeight() // Preencher toda a width da tela
     ) {
         /* Elementos do Card Informativo */
         TituloCard(titulo)
@@ -176,7 +181,8 @@ fun TituloCard(
 /**
  * Função combinável que exibe um texto descritivo pro card.
  *
- *
+ * @param descricao Texto descritivo a ser exibido.
+ * @param modifier Modificador.
  */
 @Composable
 fun descricaoCard(
