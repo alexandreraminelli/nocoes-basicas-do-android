@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cartão de Visitas</string>
+
+    <string name="title">Desenvolvedor de Software</string>
+    <string name="education">Estudante de Inteligência Artificial e Ciência de Dados</string>
+</resources>

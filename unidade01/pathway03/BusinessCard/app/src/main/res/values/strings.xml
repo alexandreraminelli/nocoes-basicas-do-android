@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">BusinessCard</string>
+
+    <string name="name" translatable="false">Alexandre Raminelli Junior</string>
+
+    <string name="title">Software Developer</string>
+    <string name="education">Artificial Intelligence and Data Science Student</string>
+
+    <!-- Contato -->
+    <string name="tel" translatable="false">+55 (11) 94000-9763</string>
+    <string name="email" translatable="false">alexandre.raminelli9491@gmail.com</string>
+    <string name="github" translatable="false">github.com/alexandreraminelli</string>
 </resources>
