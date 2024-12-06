@@ -14,8 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.businesscard.ui.theme.BusinessCardTheme
 
 class MainActivity : ComponentActivity() {
@@ -66,20 +69,53 @@ fun GreetingBusinessCard(
             )
 
     ) {
+        // Header
+        Header(name = name, carrer = carrer)
+        // Escolaridade
         Text(
             text = name,
             modifier = modifier
         )
-        Text(
-            text = name,
-            modifier = modifier
-        )
+        // Contato
         Text(
             text = name,
             modifier = modifier
         )
     }
 }
+
+/**
+ * Cabeçalho do cartão de visitas.
+ * @author Alexandre Raminelli
+ * @param name Nome no cartão de visitas.
+ * @param carrer A profissão do cartão de visitas.
+ */
+@Composable
+fun Header(name: String, carrer: String) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally, // alinhamento: centralizado
+        verticalArrangement = Arrangement.spacedBy(8.dp), // espaçamento: 8px
+    ) {
+        // Ícone
+
+        // Nome
+        Text(
+            text = name,
+            fontSize = 36.sp, // font-size: 36px
+            fontWeight = FontWeight.Bold, // font-weight: bold
+            textAlign = TextAlign.Center, // text-align: center
+            modifier = Modifier
+        )
+        // Profissão
+        Text(
+            text = carrer,
+            fontSize = 22.sp, // font-size: 16px
+            textAlign = TextAlign.Center, // text-align: center
+            modifier = Modifier
+        )
+    }
+}
+
 
 @Preview(showBackground = true)
 @Composable
