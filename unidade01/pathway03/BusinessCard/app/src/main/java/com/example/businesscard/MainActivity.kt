@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
@@ -78,10 +79,7 @@ fun GreetingBusinessCard(
         // Header
         Header(icon = codeIcon, name = name, carrer = carrer)
         // Escolaridade
-        Text(
-            text = name,
-            modifier = modifier
-        )
+        EducationWidget(education = education)
         // Contato
         Text(
             text = name,
@@ -104,9 +102,7 @@ fun Header(icon: Painter, name: String, carrer: String) {
     ) {
         // Ícone Code
         Icon(
-            painter = icon,
-            contentDescription = null,
-            modifier = Modifier
+            painter = icon, contentDescription = null, modifier = Modifier
         )
         // Nome
         Text(
@@ -126,6 +122,32 @@ fun Header(icon: Painter, name: String, carrer: String) {
     }
 }
 
+/**
+ *
+ */
+@Composable
+fun EducationWidget(
+    education: String
+) {
+    // Ícone de educação
+    val educationIcon = painterResource(R.drawable.school)
+
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(12.dp), // espaçamento: 12px
+    ) {
+        // Ícone de educação
+        Icon(
+            painter = educationIcon, contentDescription = null, modifier = Modifier
+        )
+        // texto de educação
+        Text(
+            text = education,
+            fontSize = 20.sp,
+            textAlign = TextAlign.Start,
+            modifier = Modifier
+        )
+    }
+}
 
 @Preview(showBackground = true)
 @Composable
