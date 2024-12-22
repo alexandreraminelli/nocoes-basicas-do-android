@@ -62,6 +62,8 @@ fun GreetingBusinessCard(
 
     /* Variáveis dos ícones */
     val codeIcon = painterResource(R.drawable.code)
+    val phoneIcon = painterResource(R.drawable.call)
+    val emailIcon = painterResource(R.drawable.mail)
 
     /* layout da página */
     Column(
@@ -81,10 +83,14 @@ fun GreetingBusinessCard(
         // Escolaridade
         EducationWidget(education = education)
         // Contato
-        Text(
-            text = name,
-            modifier = modifier
-        )
+        Column {
+            // Telefone
+            ContactWidget(phoneIcon, phone)
+            // Email
+            ContactWidget(emailIcon, email)
+            // LinkedIn
+            // GitHub
+        }
     }
 }
 
@@ -123,7 +129,9 @@ fun Header(icon: Painter, name: String, carrer: String) {
 }
 
 /**
- *
+ * Widget com as informações de escolaridade.
+ * @author Alexandre Raminelli
+ * @param education Escolaridade (como curso de graduação) do usuário.
  */
 @Composable
 fun EducationWidget(
@@ -143,6 +151,35 @@ fun EducationWidget(
         Text(
             text = education,
             fontSize = 20.sp,
+            textAlign = TextAlign.Start,
+            modifier = Modifier
+        )
+    }
+}
+
+/**
+ * Widget de informações de contato.
+ * @author Alexandre Raminelli
+ * @param icon Ícone de contato. Informa qual é o tipo de contato.
+ * @param contact Contato (como telefone, email ou redes sociais) do usuário.
+ */
+@Composable
+fun ContactWidget(
+    icon: Painter,
+    contact: String
+){
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(12.dp), // espaçamento: 12px
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        // Ícone de contato
+        Icon(
+            painter = icon, contentDescription = null, modifier = Modifier
+        )
+        // texto de contato
+        Text(
+            text = contact,
+            fontSize = 18.sp,
             textAlign = TextAlign.Start,
             modifier = Modifier
         )
