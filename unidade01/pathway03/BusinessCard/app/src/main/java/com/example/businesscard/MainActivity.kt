@@ -8,11 +8,14 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -56,6 +59,9 @@ fun GreetingBusinessCard(
     val linkedin = stringResource(R.string.linkedin)
     val github = stringResource(R.string.github)
 
+    /* Variáveis dos ícones */
+    val codeIcon = painterResource(R.drawable.code)
+
     /* layout da página */
     Column(
         // layout
@@ -70,7 +76,7 @@ fun GreetingBusinessCard(
 
     ) {
         // Header
-        Header(name = name, carrer = carrer)
+        Header(icon = codeIcon, name = name, carrer = carrer)
         // Escolaridade
         Text(
             text = name,
@@ -91,13 +97,17 @@ fun GreetingBusinessCard(
  * @param carrer A profissão do cartão de visitas.
  */
 @Composable
-fun Header(name: String, carrer: String) {
+fun Header(icon: Painter, name: String, carrer: String) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally, // alinhamento: centralizado
         verticalArrangement = Arrangement.spacedBy(8.dp), // espaçamento: 8px
     ) {
-        // Ícone
-
+        // Ícone Code
+        Icon(
+            painter = icon,
+            contentDescription = null,
+            modifier = Modifier
+        )
         // Nome
         Text(
             text = name,
