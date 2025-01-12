@@ -1,0 +1,14 @@
+<resources>
+    <!-- App name -->
+    <string name="app_name">Business Card</string>
+    <!-- Headline Text -->
+    <string name="user_name" translatable="false">Alexandre Raminelli</string>
+    <string name="carrer">Software Developer</string>
+    <!-- scholarity -->
+    <string name="education">Artificial Intelligence and Data Science Student</string>
+    <!-- Contact -->
+    <string name="phone" translatable="false">+55 (11) 94000–9763</string>
+    <string name="email" translatable="false">alexandre.raminelli9491@gmail.com</string>
+    <string name="linkedin" translatable="false">/alexandre-raminelli-junior</string>
+    <string name="github" translatable="false">alexandreraminelli</string>
+</resources>
