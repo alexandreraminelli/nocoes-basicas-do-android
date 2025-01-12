@@ -64,6 +64,8 @@ fun GreetingBusinessCard(
     val codeIcon = painterResource(R.drawable.code)
     val phoneIcon = painterResource(R.drawable.call)
     val emailIcon = painterResource(R.drawable.mail)
+    val linkedinLogo = painterResource(R.drawable.linkedin)
+    val githubLogo = painterResource(R.drawable.github)
 
     /* layout da página */
     Column(
@@ -89,7 +91,9 @@ fun GreetingBusinessCard(
             // Email
             ContactWidget(emailIcon, email)
             // LinkedIn
+            ContactWidget(linkedinLogo, linkedin)
             // GitHub
+            ContactWidget(githubLogo, github)
         }
     }
 }
