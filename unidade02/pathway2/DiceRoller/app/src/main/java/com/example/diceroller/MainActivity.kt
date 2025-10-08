@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
@@ -33,11 +34,13 @@ fun DiceRollerApp() {
     DiceWithButtonAndImage(
         modifier = Modifier
             .fillMaxSize() // ocupar toda a tela
-            .wrapContentSize(Alignment.Center) // 
+            .wrapContentSize(Alignment.Center) //
     )
 }
 
 @Composable
 fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
+    Column(modifier, horizontalAlignment = Alignment.CenterHorizontally) {
 
+    }
 }
