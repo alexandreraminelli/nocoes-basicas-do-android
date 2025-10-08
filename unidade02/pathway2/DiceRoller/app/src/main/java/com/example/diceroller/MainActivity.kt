@@ -19,20 +19,19 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             DiceRollerTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                   
-                }
+                DiceRollerApp()
             }
         }
     }
 }
+
 @Preview
 @Composable
-fun DiceRollerApp(){
-
+fun DiceRollerApp() {
+    DiceWithButtonAndImage()
 }
 
 @Composable
-fun DiceWithButtonAndImage(){
+fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
 
 }
