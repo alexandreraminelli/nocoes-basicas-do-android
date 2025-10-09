@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Limonada</string>
+
+    <string name="first_step_instructions">Toque no limoeiro para selecionar um limão</string>
+    <string name="second_step_instructions">Continue tocando no limão para espremê-lo</string>
+    <string name="third_step_instructions">Toque na limonada para bebê-lá</string>
+    <string name="fourth_step_instructions">Toque no copo vazio para recomeçar</string>
+
+    <string name="first_step_img">Limoeiro</string>
+    <string name="second_step_img">Limão</string>
+    <string name="third_step_img">Copo de limonada</string>
+    <string name="fourth_step_img">Copo vazio</string>
+</resources>
