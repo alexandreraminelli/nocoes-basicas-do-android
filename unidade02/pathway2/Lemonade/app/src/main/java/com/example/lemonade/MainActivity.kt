@@ -4,9 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -18,7 +21,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.lemonade.ui.theme.LemonadeTheme
 
 class MainActivity : ComponentActivity() {
@@ -47,7 +53,7 @@ fun LemonadeApp(modifier: Modifier = Modifier) {
         2 -> R.string.second_step_instructions
         3 -> R.string.third_step_instructions
         4 -> R.string.fourth_step_instructions
-        else -> "Error"
+        else -> R.string.first_step_instructions
     }
 
     /** Imagem da etapa. */
@@ -65,7 +71,7 @@ fun LemonadeApp(modifier: Modifier = Modifier) {
         2 -> R.string.second_step_img
         3 -> R.string.third_step_img
         4 -> R.string.fourth_step_img
-        else -> "Error"
+        else -> R.string.first_step_img
     }
 
     Column(
@@ -74,7 +80,12 @@ fun LemonadeApp(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
+        Image(
+            painter = painterResource(image),
+            contentDescription = stringResource(imgDesc)
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(stringResource(instruction))
 
     }
 }
