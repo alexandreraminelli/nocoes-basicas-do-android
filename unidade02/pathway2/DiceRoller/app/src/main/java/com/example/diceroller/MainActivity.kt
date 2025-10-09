@@ -47,6 +47,9 @@ fun DiceRollerApp() {
 
 @Composable
 fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
+    /** Resultado do dado. */
+    var result = 1
+
     Column(modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         // imagem do dado
         Image(
@@ -57,7 +60,7 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(16.dp))
         // botão de rolar dados
         Button(onClick = {
-            // TODO: sortear número do dado
+            result = (1..6).random() // sortear número entre 1 e 6
         }) {
             Text(stringResource(R.string.roll))
         }
