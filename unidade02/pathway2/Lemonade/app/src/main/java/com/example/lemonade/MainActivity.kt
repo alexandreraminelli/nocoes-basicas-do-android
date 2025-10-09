@@ -78,6 +78,12 @@ fun LemonadeApp(modifier: Modifier = Modifier) {
         else -> R.string.first_step_img
     }
 
+    /** Quantidade de vezes que precisa expremer o limão. */
+    val squeezeNum = (2..4).random()
+
+    /** Contador de quantas vezes clicou no limão. */
+    var squeezeCont = 0
+
     Column(
         modifier = modifier
             .fillMaxSize(),
@@ -87,7 +93,12 @@ fun LemonadeApp(modifier: Modifier = Modifier) {
         // Imagem do limão
         Button(
             onClick = {
-                if (step < 4) {
+                if (step == 2) {
+                    squeezeCont++
+                    if (squeezeCont == squeezeNum) {
+                        step++
+                    }
+                } else if (step < 4) {
                     step++
                 } else {
                     step = 1
