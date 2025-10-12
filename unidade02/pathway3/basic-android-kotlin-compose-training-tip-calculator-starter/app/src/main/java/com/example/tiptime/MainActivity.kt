@@ -74,9 +74,11 @@ fun TipTimeLayout() {
                 .padding(bottom = 16.dp, top = 40.dp)
                 .align(alignment = Alignment.Start)
         )
-        EditNumberField(modifier = Modifier
-            .padding(bottom = 32.dp)
-            .fillMaxWidth())
+        EditNumberField(
+            modifier = Modifier
+                .padding(bottom = 32.dp)
+                .fillMaxWidth()
+        )
 
         // Result
         Text(
@@ -100,8 +102,10 @@ private fun calculateTip(amount: Double, tipPercent: Double = 15.0): String {
 /** Campo para inserir o valor da conta. */
 @Composable
 fun EditNumberField(modifier: Modifier = Modifier) {
+    val amountInput = "0"
+
     TextField(
-        value = "", // valor do campo (vazio)
+        value = amountInput, // valor do campo
         onValueChange = {
             // Lambda executada quando o valor do campo mudar
         },
