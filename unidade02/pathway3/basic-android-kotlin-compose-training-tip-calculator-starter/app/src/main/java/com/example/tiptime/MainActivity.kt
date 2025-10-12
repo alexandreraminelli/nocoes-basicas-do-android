@@ -33,6 +33,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -102,12 +104,12 @@ private fun calculateTip(amount: Double, tipPercent: Double = 15.0): String {
 /** Campo para inserir o valor da conta. */
 @Composable
 fun EditNumberField(modifier: Modifier = Modifier) {
-    val amountInput = "0"
+    var amountInput: MutableState<String> = mutableStateOf("0")
 
     TextField(
-        value = amountInput, // valor do campo
-        onValueChange = {
-            // Lambda executada quando o valor do campo mudar
+        value = amountInput.value, // valor do campo
+        onValueChange = { // Lambda executada quando o valor do campo mudar
+            amountInput.value = it
         },
         modifier = modifier
     )
