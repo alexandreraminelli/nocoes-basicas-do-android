@@ -90,7 +90,7 @@ fun TipTimeLayout() {
     var roundUp by remember { mutableStateOf(false) }
 
     /** Valor da gorjeta. */
-    val tip = calculateTip(amount, tipPercent)
+    val tip = calculateTip(amount, tipPercent, roundUp)
 
     Column(
         modifier = Modifier
@@ -153,8 +153,15 @@ fun TipTimeLayout() {
  * according to the local currency.
  * Example would be "$10.00".
  */
-private fun calculateTip(amount: Double, tipPercent: Double = 15.0): String {
-    val tip = tipPercent / 100 * amount
+private fun calculateTip(
+    amount: Double,
+    tipPercent: Double = 15.0,
+    roundUp: Boolean
+): String {
+    var tip = tipPercent / 100 * amount
+    if(roundUp) { // Arredondar se solicitado
+        tip = kotlin.math.ceil(tip)
+    }
     return NumberFormat.getCurrencyInstance().format(tip)
 }
 
@@ -170,7 +177,7 @@ fun RoundTheTipRow(
             .fillMaxWidth()
             .size(48.dp),
         verticalAlignment = Alignment.CenterVertically,
-        ) {
+    ) {
         Text(
             text = stringResource(R.string.round_up_tip),
         )
