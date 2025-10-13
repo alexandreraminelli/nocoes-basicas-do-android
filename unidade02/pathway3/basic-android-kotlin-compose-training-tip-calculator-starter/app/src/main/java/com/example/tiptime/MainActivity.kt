@@ -66,6 +66,17 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TipTimeLayout() {
+    /** Valor no campo de texto. */
+    var amountInput by remember { mutableStateOf("") }
+
+    /** Valor da conta. Converte String para Double.
+     * Valor padrão em caso de erro: 0.0.
+     */
+    val amount = amountInput.toDoubleOrNull() ?: 0.0
+
+    /** Valor da gorjeta. */
+    val tip = calculateTip(amount)
+
     Column(
         modifier = Modifier
             .statusBarsPadding()
@@ -82,6 +93,8 @@ fun TipTimeLayout() {
                 .align(alignment = Alignment.Start)
         )
         EditNumberField(
+            value = amountInput,
+            onValueChange = { amountInput = it },
             modifier = Modifier
                 .padding(bottom = 32.dp)
                 .fillMaxWidth()
@@ -89,7 +102,10 @@ fun TipTimeLayout() {
 
         // Result
         Text(
-            text = stringResource(R.string.tip_amount, "$0.00"),
+            text = stringResource(
+                R.string.tip_amount,
+                "$0.00"
+            ),
             style = MaterialTheme.typography.displaySmall
         )
         Spacer(modifier = Modifier.height(150.dp))
@@ -108,27 +124,18 @@ private fun calculateTip(amount: Double, tipPercent: Double = 15.0): String {
 
 /** Campo para inserir o valor da conta. */
 @Composable
-fun EditNumberField(modifier: Modifier = Modifier) {
-    /** Valor no campo de texto. */
-    var amountInput by remember { mutableStateOf("") }
-
-    /** Valor da conta. Converte String para Double.
-     * Valor padrão em caso de erro: 0.0.
-     */
-    val amount = amountInput.toDoubleOrNull() ?: 0.0
-
-    /** Valor da gorjeta. */
-    val tip = calculateTip(amount)
-
+fun EditNumberField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
     TextField(
-        value = amountInput, // valor do campo
+        value = value, // valor do campo
         label = { Text(stringResource(R.string.bill_amount)) }, // Rótulo
         singleLine = true, // apenas uma linha de texto rolavel horizontalmente
         // Tipo de teclado: numérico
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-        onValueChange = { // Lambda executada quando o valor do campo mudar
-            amountInput = it
-        },
+        onValueChange = onValueChange,
         modifier = modifier
     )
 }
