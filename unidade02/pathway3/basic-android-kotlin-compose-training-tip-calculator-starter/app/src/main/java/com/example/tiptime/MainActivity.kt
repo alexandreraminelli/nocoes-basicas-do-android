@@ -19,6 +19,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -32,20 +33,23 @@ import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -90,13 +94,14 @@ fun TipTimeLayout() {
     var roundUp by remember { mutableStateOf(false) }
 
     /** Valor da gorjeta. */
-    val tip = calculateTip(amount, tipPercent)
+    val tip = calculateTip(amount, tipPercent, roundUp)
 
     Column(
         modifier = Modifier
             .statusBarsPadding()
             .padding(horizontal = 40.dp)
-            .safeDrawingPadding(),
+            .safeDrawingPadding()
+            .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -109,6 +114,7 @@ fun TipTimeLayout() {
         )
         EditNumberField( // Valor da conta
             label = R.string.bill_amount,
+            leadingIcon = R.drawable.money,
             value = amountInput,
             onValueChange = { amountInput = it },
             keyboardOptions = KeyboardOptions.Default.copy(
@@ -121,6 +127,7 @@ fun TipTimeLayout() {
         )
         EditNumberField( // Porcentagem da gorjeta
             label = R.string.how_was_the_service,
+            leadingIcon = R.drawable.percent,
             value = tipInput,
             onValueChange = { tipInput = it },
             keyboardOptions = KeyboardOptions.Default.copy(
@@ -153,8 +160,15 @@ fun TipTimeLayout() {
  * according to the local currency.
  * Example would be "$10.00".
  */
-private fun calculateTip(amount: Double, tipPercent: Double = 15.0): String {
-    val tip = tipPercent / 100 * amount
+private fun calculateTip(
+    amount: Double,
+    tipPercent: Double = 15.0,
+    roundUp: Boolean
+): String {
+    var tip = tipPercent / 100 * amount
+    if (roundUp) { // Arredondar se solicitado
+        tip = kotlin.math.ceil(tip)
+    }
     return NumberFormat.getCurrencyInstance().format(tip)
 }
 
@@ -170,7 +184,7 @@ fun RoundTheTipRow(
             .fillMaxWidth()
             .size(48.dp),
         verticalAlignment = Alignment.CenterVertically,
-        ) {
+    ) {
         Text(
             text = stringResource(R.string.round_up_tip),
         )
@@ -188,6 +202,7 @@ fun RoundTheTipRow(
 @Composable
 fun EditNumberField(
     @StringRes label: Int, // referência de recurso de String
+    @DrawableRes leadingIcon: Int,
     value: String,
     onValueChange: (String) -> Unit,
     keyboardOptions: KeyboardOptions,
@@ -196,8 +211,14 @@ fun EditNumberField(
     TextField(
         value = value, // valor do campo
         label = { Text(stringResource(label)) }, // rótulo
-        singleLine = true, // apenas uma linha de texto rolavel horizontalmente
+        singleLine = true, // apenas uma linha de texto scrollable horizontalmente
         // Tipo de teclado: numérico
+        leadingIcon = {
+            Icon(
+                painter = painterResource(id = leadingIcon),
+                null
+            )
+        },
         keyboardOptions = keyboardOptions,
         onValueChange = onValueChange,
         modifier = modifier
