@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Galeria de Arte</string>
+    <string name="previous">Voltar</string>
+    <string name="next">Próximo</string>
 </resources>
