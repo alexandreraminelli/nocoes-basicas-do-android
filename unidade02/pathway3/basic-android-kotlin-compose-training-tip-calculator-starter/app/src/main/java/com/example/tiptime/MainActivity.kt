@@ -19,6 +19,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -69,13 +70,19 @@ fun TipTimeLayout() {
     /** Valor no campo de texto. */
     var amountInput by remember { mutableStateOf("") }
 
+    /** Valor do campo de porcentagem da gorjeta. */
+    var tipInput by remember { mutableStateOf("") }
+
     /** Valor da conta. Converte String para Double.
      * Valor padrão em caso de erro: 0.0.
      */
     val amount = amountInput.toDoubleOrNull() ?: 0.0
 
+    /** Porcentagem da gorjeta. */
+    val tipPercent = tipInput.toDoubleOrNull() ?: 0.0
+
     /** Valor da gorjeta. */
-    val tip = calculateTip(amount)
+    val tip = calculateTip(amount, tipPercent)
 
     Column(
         modifier = Modifier
@@ -92,13 +99,23 @@ fun TipTimeLayout() {
                 .padding(bottom = 16.dp, top = 40.dp)
                 .align(alignment = Alignment.Start)
         )
-        EditNumberField(
+        EditNumberField( // Valor da conta
+            label = R.string.bill_amount,
             value = amountInput,
             onValueChange = { amountInput = it },
             modifier = Modifier
                 .padding(bottom = 32.dp)
                 .fillMaxWidth()
         )
+        EditNumberField( // Porcentagem da gorjeta
+            label = R.string.how_was_the_service,
+            value = tipInput,
+            onValueChange = { tipInput = it },
+            modifier = Modifier
+                .padding(bottom = 32.dp)
+                .fillMaxWidth()
+        )
+
 
         // Result
         Text(
@@ -119,16 +136,17 @@ private fun calculateTip(amount: Double, tipPercent: Double = 15.0): String {
     return NumberFormat.getCurrencyInstance().format(tip)
 }
 
-/** Campo para inserir o valor da conta. */
+/** Campos de texto que gerenciam um estado de string. */
 @Composable
 fun EditNumberField(
+    @StringRes label: Int, // referência de recurso de String
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     TextField(
         value = value, // valor do campo
-        label = { Text(stringResource(R.string.bill_amount)) }, // Rótulo
+        label = { Text(stringResource(label)) }, // rótulo
         singleLine = true, // apenas uma linha de texto rolavel horizontalmente
         // Tipo de teclado: numérico
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
