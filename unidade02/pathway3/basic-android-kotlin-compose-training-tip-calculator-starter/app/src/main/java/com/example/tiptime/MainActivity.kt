@@ -109,7 +109,16 @@ private fun calculateTip(amount: Double, tipPercent: Double = 15.0): String {
 /** Campo para inserir o valor da conta. */
 @Composable
 fun EditNumberField(modifier: Modifier = Modifier) {
+    /** Valor no campo de texto. */
     var amountInput by remember { mutableStateOf("") }
+
+    /** Valor da conta. Converte String para Double.
+     * Valor padrão em caso de erro: 0.0.
+     */
+    val amount = amountInput.toDoubleOrNull() ?: 0.0
+
+    /** Valor da gorjeta. */
+    val tip = calculateTip(amount)
 
     TextField(
         value = amountInput, // valor do campo
