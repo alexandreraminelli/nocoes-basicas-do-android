@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cursos</string>
+    <string name="architecture">Arquitetura</string>
+    <string name="crafts">Artesanato</string>
+    <string name="business">Negócios</string>
+    <string name="culinary">Culinária</string>
+    <string name="design">Design</string>
+    <string name="fashion">Moda</string>
+    <string name="film">Cinema</string>
+    <string name="gaming">Jogos</string>
+    <string name="drawing">Desenho</string>
+    <string name="lifestyle">Estilo de Vida</string>
+    <string name="music">Música</string>
+    <string name="painting">Pintura</string>
+    <string name="photography">Fotografia</string>
+    <string name="tech">Tecnologia</string>
+</resources>
