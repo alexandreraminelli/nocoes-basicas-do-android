@@ -136,19 +136,31 @@ fun DogItem(
     var expanded by remember { mutableStateOf(false) }
 
     Card(modifier = modifier) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(dimensionResource(R.dimen.padding_small))
-        ) {
-            DogIcon(dog.imageResourceId)
-            DogInformation(dog.name, dog.age)
-            Spacer(modifier = Modifier.weight(1f))
-            DogItemButton(  // Botão que abre/fecha a lista
-                expanded = expanded,
-                onClick = {
-                    // TODO: exibir/ocultar informações adicionais
-                }
+        Column() {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(dimensionResource(R.dimen.padding_small))
+            ) {
+                DogIcon(dog.imageResourceId)
+                DogInformation(dog.name, dog.age)
+                Spacer(modifier = Modifier.weight(1f))
+                DogItemButton(  // Botão que abre/fecha a lista
+                    expanded = expanded,
+                    onClick = {
+                        // TODO: exibir/ocultar informações adicionais
+                    }
+                )
+            }
+            // Informações adicionais (ocultas por padrão)
+            DogHobby(
+                dog.hobbies,
+                modifier = Modifier.padding(
+                    start = dimensionResource(R.dimen.padding_medium),
+                    top = dimensionResource(R.dimen.padding_small),
+                    end = dimensionResource(R.dimen.padding_medium),
+                    bottom = dimensionResource(R.dimen.padding_medium)
+                )
             )
         }
     }
@@ -218,6 +230,26 @@ fun DogInformation(
         )
         Text(
             text = stringResource(R.string.years_old, dogAge),
+            style = MaterialTheme.typography.bodyLarge
+        )
+    }
+}
+
+/** Informações dos hobbies dos cachorros. */
+@Composable
+fun DogHobby(
+    @StringRes dogHobby: Int,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+    ) {
+        Text( // Texto "Sobre:"
+            text = stringResource(R.string.about),
+            style = MaterialTheme.typography.labelSmall
+        )
+        Text( // Hobbie do cachorro
+            text = stringResource(dogHobby),
             style = MaterialTheme.typography.bodyLarge
         )
     }
