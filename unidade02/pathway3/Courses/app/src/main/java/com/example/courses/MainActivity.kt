@@ -32,10 +32,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CoursesTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    CoursesApp()
                 }
             }
         }
@@ -43,12 +40,22 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun CoursesApp() {
+    CoursesGrid()
 }
+
+/** Grade de cursos. */
+@Composable
+fun CoursesGrid(modifier: Modifier = Modifier) {
+    Text("Grade de cursos")
+}
+
+@Preview
+@Composable
+fun CoursesGridPreview() {
+    CoursesGrid()
+}
+
 
 /** Card de tópico de curso. */
 @Composable
