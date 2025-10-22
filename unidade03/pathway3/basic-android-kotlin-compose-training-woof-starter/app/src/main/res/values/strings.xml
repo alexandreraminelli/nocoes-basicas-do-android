@@ -14,16 +14,16 @@
   ~ limitations under the License.
   -->
 <resources>
-    <string name="app_name">Woof</string>
-    <string name="dog_name_1">Koda</string>
-    <string name="dog_name_2">Lola</string>
-    <string name="dog_name_3">Frankie</string>
-    <string name="dog_name_4">Nox</string>
-    <string name="dog_name_5">Faye</string>
-    <string name="dog_name_6">Bella</string>
-    <string name="dog_name_7">Moana</string>
-    <string name="dog_name_8">Tzeitel</string>
-    <string name="dog_name_9">Leroy</string>
+    <string name="app_name" translatable="false">Woof</string>
+    <string name="dog_name_1" translatable="false">Koda</string>
+    <string name="dog_name_2" translatable="false">Lola</string>
+    <string name="dog_name_3" translatable="false">Frankie</string>
+    <string name="dog_name_4" translatable="false">Nox</string>
+    <string name="dog_name_5" translatable="false">Faye</string>
+    <string name="dog_name_6" translatable="false">Bella</string>
+    <string name="dog_name_7" translatable="false">Moana</string>
+    <string name="dog_name_8" translatable="false">Tzeitel</string>
+    <string name="dog_name_9" translatable="false">Leroy</string>
     <string name="dog_description_1">Eating treats on the terrace</string>
     <string name="dog_description_2">Barking at Daddy</string>
     <string name="dog_description_3">Stealing socks</string>

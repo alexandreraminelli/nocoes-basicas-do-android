@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dog_description_1">Comendo guloseimas no terraço</string>
+    <string name="dog_description_2">Latindo para o papai</string>
+    <string name="dog_description_3">Roubando meias</string>
+    <string name="dog_description_4">Conhecendo novos animais</string>
+    <string name="dog_description_5">Cavando no jardim</string>
+    <string name="dog_description_6">Perseguindo a espuma do mar</string>
+    <string name="dog_description_7">Incomodando suas patas</string>
+    <string name="dog_description_8">Banho de sol</string>
+    <string name="dog_description_9">Dormindo em lugares perigosos</string>
+    <string name="about">Sobre:</string>
+    <string name="years_old">%d anos</string>
+    <string name="expand_button_content_description">Veja mais ou menos informações sobre um cão.</string>
+</resources>
