@@ -159,3 +159,12 @@ fun WoofPreview() {
         WoofApp()
     }
 }
+
+/** Pré-visualização pro modo escuro. */
+@Preview
+@Composable
+fun WoofDarkThemePreview() {
+    WoofTheme(darkTheme = true) {
+        WoofApp()
+    }
+}
